@@ -1,0 +1,12 @@
+# Transmission Service 
+sudo service transmission-daemon [start, stop, restart] == start stop or restart transmission
+
+# Transmission CLI
+transmission-remote --auth 'user:pass' -l == auth into transmission
+transmission-remote -a "link" == add torrent
+transmission-remote -l == download status
+transmission-remote -t "1,2" -r == remove torrents with ids 1 and 2
+
+# File locations
+/var/lib/transmission-daemon/info/settings.json == transmission settings
+/mnt/media/ == external drive

@@ -8,8 +8,6 @@ alias e="exit"
 alias ex="export"
 alias exp="export -p"
 
-alias tls="tmux ls"
-
 
 # Directory Listing
 alias ls="ls -G"
@@ -50,21 +48,6 @@ alias gpo="git push origin"
 alias ga="git add"
 alias gl="git log"
 
-# Arcadia
-alias test="cd ~/Desktop/test"
-alias github="cd ~/Documents/Github"
-alias flycatcher="cd ~/Documents/Github/flycatcher"
-alias pocono="cd ~/Documents/Github/pocono-swallow"
-alias nutcracker="cd ~/Documents/Github/nutcracker"
-alias grebe="cd ~/Documents/Github/grebe"
-alias snowflake=" cd ~/Documents/Github/Snowflake"
-
-function flycatchersetup () {
-    # args are nutcracker_branch, ssm_env
-    export NUTCRACKER_BRANCH="$1"
-    export SSM_ENV="$2"
-    export FLYCATCHER_LOCAL_MODE="true"
-}
 
 # Processes
 alias p="ps aux | less"
@@ -75,11 +58,6 @@ alias vi="vim"
 # Meta
 alias vv="vim ~/.vimrc"
 alias vba="vim ~/.bash_aliases"
-alias vt="vim ~/.tmux.conf"
-
-alias vac="vim ~/.aws/config"
-
-alias vbac="vim ~/.aws/config"
 
 # Python
 alias python="python3"
@@ -124,97 +102,7 @@ function weather () {
 # lolcat                                 # rainbow colors (gem install lolcat)
 # curl http://wttr.in/ann_arbor          # ascii weather report
 
-# Stax
-alias s="stax"
-alias ys="yes | stax"
-
-alias bes="bundle exec stax"
-alias ybes="yes | bundle exec stax"
-
-# Bundle
-alias be="bundle exec"
-
-# AWS
-alias asr="assume-role"
-alias av="aws-vault"
-
-awsrole () {
-        unset AWS_VAULT
-        eval $(aws-vault exec $1 -- env | grep AWS | sed -e 's/^/export\ /')
-        export AWS_PROFILE=${1} 
-        export DEFAULT_AWS_PROFILE=${1} 
-}
-
-alias ardata="awsrole data-admin"
-alias ardev="awsrole dev-admin"
-alias arrw="awsrole redshiftwrite"
-
-function installstax () {
-  chruby 2.6.6
-  bundle install
-  awsrole $1
-  stax ls
-}
-
-# Weechat
-function wee () {
-    echo 'Virtual environment changed!'
-    source ~/Documents/Common/env/bin/activate
-    # Prefixing with command due to an issue where this function
-    # and the command 'weechat' had the same name.
-    command weechat
-}
-
-# Emacs
-alias emacs="emacs -nw"
-
-# ECR
-function ecrlogin() {
-  aws ecr get-login-password|docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
-}
-function ecr () {
-  echo -n "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
-}
-function dockerbuild () {
-  docker build -t $(ecr)/$1:$(git rev-parse --abbrev-ref HEAD) .
-}
-function dockerpush () {
-  docker push $(ecr)/$1:$(git rev-parse --abbrev-ref HEAD)
-}
-
-# VPCs
-function vpcdependencies() {
-  aws ec2 describe-internet-gateways --filters 'Name=attachment.vpc-id,Values='$1 | grep InternetGatewayId
-  aws ec2 describe-subnets --filters 'Name=vpc-id,Values='$1 | grep SubnetId
-  aws ec2 describe-route-tables --filters 'Name=vpc-id,Values='$1 | grep RouteTableId
-  aws ec2 describe-network-acls --filters 'Name=vpc-id,Values='$1 | grep NetworkAclId
-  aws ec2 describe-vpc-peering-connections --filters 'Name=requester-vpc-info.vpc-id,Values='$1 | grep VpcPeeringConnectionId
-  aws ec2 describe-vpc-endpoints --filters 'Name=vpc-id,Values='$1 | grep VpcEndpointId
-  aws ec2 describe-nat-gateways --filter 'Name=vpc-id,Values='$1 | grep NatGatewayId
-  aws ec2 describe-security-groups --filters 'Name=vpc-id,Values='$1 | grep GroupId
-  aws ec2 describe-instances --filters 'Name=vpc-id,Values='$1 | grep InstanceId
-  aws ec2 describe-vpn-connections --filters 'Name=vpc-id,Values='$1 | grep VpnConnectionId
-  aws ec2 describe-vpn-gateways --filters 'Name=attachment.vpc-id,Values='$1 | grep VpnGatewayId
-  aws ec2 describe-network-interfaces --filters 'Name=vpc-id,Values='$1 | grep NetworkInterfaceId
-}
-
-function s3lastmodified() {
-    # arg is name of a bucket
-    aws s3 ls $1 --recursive | sort | tail -n 1 | cut -d ' ' -f1,2
-}
-
-# Mac
-function uq() {
-  # arg is /path/to/file
-  sudo xattr -d com.apple.quarantine $1
-}
-
-# File privleges
-function checkprivileges () {
-  # arg is /path/to/file
-  stat -f %A $1
-}
-
-function exportgemfurytoken () {
-    export GEMFURY_TOKEN=$(aws ssm get-parameter --name /gemfury/token --with-decryption --query 'Parameter.Value' --output text)
-}
+# Transmission
+alias ts="sudo service transmission-daemon"
+alias vts="sudo vim /var/lib/transmission-daemon/info/settings.json"
+alias tra="transmission-remote -a"

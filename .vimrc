@@ -1,83 +1,8 @@
-" Required for vundle
-set nocompatible
-filetype off
-
-" Set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
-" Begin vundle plugins
-" Plugins installed with :PluginInstall
-call vundle#begin()
-
-" Let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" Autocompete engine
-Plugin 'valloric/youcompleteme'
-
-" Fuzzy file finder
-Plugin 'ctrlpvim/ctrlp.vim'
-
-" Align text
-Plugin 'junegunn/vim-easy-align'
-
-" Format .md tables with <leader>tm
-Plugin 'dhruvasagar/vim-table-mode'
-
-" Show changes in git repos
-Plugin 'airblade/vim-gitgutter'
-
-" Commenting with gc{motion}
-Plugin 'tpope/vim-commentary'
-
-" Show indenting on filetype with <leader>ig
-Plugin 'nathanaelkane/vim-indent-guides'
-
-" Minimal status bar
-Plugin 'itchyny/lightline.vim'
-
-" Solarized color scheme
-Bundle 'altercation/vim-colors-solarized'
-
-" Distraction free with :Goyo
-Plugin 'junegunn/goyo.vim'
-
-" Surrounding and unsurrounding with cs{char} ds{char} ys{char}
-Plugin 'tpope/vim-surround'
-
-" Git commands in vim
-Plugin 'tpope/vim-fugitive'
-
-" Syntax checking
-Plugin 'vim-syntastic/syntastic'
-
-" More visual movment with <Leader><Leader><motion>
-Plugin 'easymotion/vim-easymotion'
-
-" Send text from one window to another 
-Plugin 'karoliskoncevicius/vim-sendtowindow'
-
-" Python code formatting with :Black
-Plugin 'psf/black'
-
-" Support for repeating plugin commands with .
-Plugin 'tpope/vim-repeat'
-
-" All of your Plugins must be added before the following line
-call vundle#end()
-
-" Required by vundle
-filetype plugin indent on
-
-""" End vundle requirements
-
 " Enable syntax processing
 syntax enable
 
 " Color scheme
 set background=dark
-let g:solarized_termcolors = 256
-colorscheme solarized
 
 " Show file in title bar
 set title
@@ -93,7 +18,7 @@ set ai
 set si
 
 " Load filetype-specific indenting
-"filetype indent on
+filetype indent on
 
 " Visual autocomplete menu
 set wildmenu
@@ -145,34 +70,11 @@ set autoread
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-" Use smallest visual indents
-let g:indent_guides_guide_size = 1
-let g:indent_guides_color_change_percent = 3
-let g:indent_guides_enable_on_vim_startup = 1
-
-" For bug with Lightline
-set laststatus=2
-
-" Dont double show mode w/ lightline
-set noshowmode
-
-" Lightline colorscheme
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
-
 " Format JSON with this command
 com! FormatJSON %!python -m json.tool
 
 " Update gitgutter diff faster
 set updatetime=100
-
-" Fix gitgutter color scheme https://github.com/airblade/vim-gitgutter/issues/164
-highlight clear SignColumn
-highlight GitGutterAdd ctermfg=green
-highlight GitGutterChange ctermfg=yellow
-highlight GitGutterDelete ctermfg=red
-highlight GitGutterChangeDelete ctermfg=yellow
 
 " Paste like a normal human being
 " Having this on by default seems to mess with YCM
@@ -194,34 +96,6 @@ set splitright
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-" Recommended Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" Don't show loc list because it's annoying
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Use python3 for syntastic...duh
-let g:syntastic_python_python_exec = 'python3'
-let g:syntastic_python_checkers = ['python']
-
-" Probably need to start a vim aliases file
-
-" Remap default send to window mappings
-let g:sendtowindow_use_defaults=0
-
-nmap <Leader>l <Plug>SendRight
-xmap <Leader>l <Plug>SendRightV
-nmap <Leader>h <Plug>SendLeft
-xmap <Leader>h <Plug>SendLeftV
-nmap <Leader>k <Plug>SendUp
-xmap <Leader>k <Plug>SendUpV
-nmap <Leader>j <Plug>SendDown
-xmap <Leader>j <Plug>SendDownV
 
 " Faster split navigation
 nnoremap <C-J> <C-W><C-J>
@@ -265,30 +139,9 @@ nnoremap <Leader>n :noh<CR>
 inoremap jk <esc>
 inoremap jj <esc>:w!<cr>
 
-" Fast hunk jump
-" Non-recursively remapping seems to break this...
-nmap <Leader>] <Plug>(GitGutterNextHunk)
-nmap <Leader>[ <Plug>(GitGutterPrevHunk)
-
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-" Use easy motion with search
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
 " Save and load folds automatically
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
-
-" Run black on file save for all python files
-autocmd BufWritePre *.py execute ':Black'
 
 " Source vimrc on filechange
 autocmd BufWritePost $MYVIMRC nested source $MYVIMRC
