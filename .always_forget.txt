@@ -1,3 +1,6 @@
+# Drives
+df -h == list drives in Gb
+
 # Transmission Service 
 sudo service transmission-daemon [start, stop, restart] == start stop or restart transmission
 
@@ -7,6 +10,36 @@ transmission-remote -a "link" == add torrent
 transmission-remote -l == download status
 transmission-remote -t "1,2" -r == remove torrents with ids 1 and 2
 
+# uwsigi
+sudo systemctl status uwsgi.service = check server status
+
 # File locations
 /var/lib/transmission-daemon/info/settings.json == transmission settings
 /mnt/media/ == external drive
+/etc/nginx/sites-available/server == nginx config for mediabois
+
+# this ip
+192.168.86.134
+
+# Watch
+watch -n <seconds> "<command>" == run <command> every <seconds>
+
+# RPI
+sudo shutdown = die
+sudo reboot = reboot
+
+# SCP
+scp /path/to/file user@host:/directory/to/place/file == copy from local to ssh 
+
+# nginx
+sudo service nginx restart = duh
+
+# server setup guide
+https://www.raspberrypi-spy.co.uk/2018/12/running-flask-under-nginx-raspberry-pi/
+
+# nordvpn 
+nordvpn login = login
+nordvpn connect = start proxying traffic
+nordvpn disconnect = duh
+
+nordvpn whitelist add port = add a port to allow locally
