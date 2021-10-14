@@ -12,6 +12,7 @@ transmission-remote -t "1,2" -r == remove torrents with ids 1 and 2
 
 # uwsigi
 sudo systemctl status uwsgi.service = check server status
+sudo systemctl stop/start/restart uwsgi.service
 
 # File locations
 /var/lib/transmission-daemon/info/settings.json == transmission settings
@@ -31,6 +32,10 @@ sudo reboot = reboot
 # SCP
 scp /path/to/file user@host:/directory/to/place/file == copy from local to ssh 
 
+# Daemon reload
+sudo systemctl daemon-reload
+
+
 # nginx
 sudo service nginx restart = duh
 
@@ -43,3 +48,11 @@ nordvpn connect = start proxying traffic
 nordvpn disconnect = duh
 
 nordvpn whitelist add port = add a port to allow locally
+
+
+systemctl list-units --type=service = see all running systemd services
+
+vcgencmd measure_temp = see device temp
+
+sudo /opt/vc/bin/tvservice -o = turn off HDMI (must be done everytime on reboot)
+sudo /opt/vc/bin/tvservice -p = turn off HDMI

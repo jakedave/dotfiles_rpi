@@ -106,3 +106,28 @@ function weather () {
 alias ts="sudo service transmission-daemon"
 alias vts="sudo vim /var/lib/transmission-daemon/info/settings.json"
 alias tra="transmission-remote -a"
+
+# Server
+alias urs="sudo systemctl restart uwsgi.service"
+
+alias trs="sudo systemctl restart transmission-daemon.service"
+alias prs="sudo systemctl restart plexmediaserver.service"
+
+alias uss="sudo systemctl start uwsgi.service"
+
+alias tss="sudo systemctl start transmission-daemon.service"
+alias pss="sudo systemctl start plexmediaserver.service"
+
+alias usss="sudo systemctl stop uwsgi.service"
+
+alias tsss="sudo systemctl stop transmission-daemon.service"
+alias psss="sudo systemctl stop plexmediaserver.service"
+
+# Daemons
+alias dr="sudo systemctl daemon-reload"
+
+# Nordvpn
+alias vpnl="nordvpn login"
+alias vpnc="nordvpn connect"
+alias vpns="nordvpn status"
+alias vpnd="nordvpn disconnect"
