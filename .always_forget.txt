@@ -58,3 +58,5 @@ vcgencmd measure_temp = see device temp
 
 sudo /opt/vc/bin/tvservice -o = turn off HDMI (must be done everytime on reboot)
 sudo /opt/vc/bin/tvservice -p = turn off HDMI
+
+iwconfig = see internet config
