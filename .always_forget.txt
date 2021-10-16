@@ -19,6 +19,7 @@ sudo systemctl stop/start/restart uwsgi.service
 /mnt/media/ == external drive
 /etc/nginx/sites-available/server == nginx config for mediabois
 /etc/watchdog.conf = watchdog configuration
+/etc/rc.local = network things
 
 # this ip
 192.168.86.134
