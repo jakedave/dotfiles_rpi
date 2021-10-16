@@ -18,6 +18,7 @@ sudo systemctl stop/start/restart uwsgi.service
 /var/lib/transmission-daemon/info/settings.json == transmission settings
 /mnt/media/ == external drive
 /etc/nginx/sites-available/server == nginx config for mediabois
+/etc/watchdog.conf = watchdog configuration
 
 # this ip
 192.168.86.134
