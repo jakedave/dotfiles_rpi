@@ -5,3 +5,4 @@ https://www.raspberrypi-spy.co.uk/2018/12/running-flask-under-nginx-raspberry-pi
 https://diode.io/raspberry%20pi/running-forever-with-the-raspberry-pi-hardware-watchdog-20202/ = setup watchdog
 https://blues.io/blog/tips-tricks-optimizing-raspberry-pi-power/ = optimize power consumption
 https://defgw.wordpress.com/2017/10/24/watchdog-reboot-raspberry-pi-if-network-is-down/ = watchdog for network down
+http://www.weigu.lu/sb-computer/raspi_tips_tricks/index.html#link_9 = 12 year olds website that might save my life because wifi
