@@ -16,3 +16,10 @@
 
 !.always_forget.txt
 
+!.articles_for_pi.txt
+
+!.watchdog.conf.copy
+
+!.cmdline.txt.copy
+
+!.server.copy

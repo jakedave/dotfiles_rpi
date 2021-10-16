@@ -1,0 +1,11 @@
+server {
+	listen 80;
+        # Comment out below to allow traffic over internet?
+	server_name localhost;
+
+	location / { try_files $uri @app; }
+	location @app {
+		include uwsgi_params;
+		uwsgi_pass unix:/tmp/flasktest.sock;
+	}
+}

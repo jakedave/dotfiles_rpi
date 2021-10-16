@@ -1,0 +1,7 @@
+https://pimylifeup.com/raspberry-pi-plex-server/ = media server setup
+https://pimylifeup.com/raspberry-pi-mount-usb-drive/ = mount drive
+https://pimylifeup.com/raspberry-pi-transmission/ = torrent setup
+https://www.raspberrypi-spy.co.uk/2018/12/running-flask-under-nginx-raspberry-pi/ = running web server
+https://diode.io/raspberry%20pi/running-forever-with-the-raspberry-pi-hardware-watchdog-20202/ = setup watchdog
+https://blues.io/blog/tips-tricks-optimizing-raspberry-pi-power/ = optimize power consumption
+https://defgw.wordpress.com/2017/10/24/watchdog-reboot-raspberry-pi-if-network-is-down/ = watchdog for network down
