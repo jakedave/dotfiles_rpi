@@ -50,6 +50,8 @@ nordvpn connect = start proxying traffic
 nordvpn disconnect = duh
 
 nordvpn whitelist add port = add a port to allow locally
+nordvpn set autoconnect off = turn off autoconnect
+nordvpn set autoconnect on us8914  = turn on autoconnect p2p
 
 
 systemctl list-units --type=service = see all running systemd services
